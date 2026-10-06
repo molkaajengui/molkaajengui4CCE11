@@ -21,4 +21,8 @@ public class Employe {
 
     @Enumerated(EnumType.STRING)
     private RoleEmploye role;
+
+    @ManyToOne
+    @ToString.Exclude
+    private Agence agence;
 }
