@@ -1,4 +1,7 @@
 package tn.esprit.molkaajengui4cce11.Repository;
 
-public interface IVehiculeRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.molkaajengui4cce11.domaine.Vehicule;
+
+public interface IVehiculeRepository extends JpaRepository<Vehicule, Long> {
 }
