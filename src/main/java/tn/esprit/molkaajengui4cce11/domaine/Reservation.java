@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,13 +27,16 @@ public class Reservation {
 
     @ManyToOne
     @ToString.Exclude
+    @JsonIgnoreProperties("reservations")
     private Vehicule vehicule;
 
     @ManyToOne
     @ToString.Exclude
+    @JsonIgnoreProperties("reservations")
     private Client client;
 
     @OneToOne(mappedBy = "reservation")
     @ToString.Exclude
+    @JsonIgnoreProperties("reservation")
     private Contrat contrat;
 }

@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +25,6 @@ public class Employe {
 
     @ManyToOne
     @ToString.Exclude
+    @JsonIgnoreProperties({"employes", "vehicules"})
     private Agence agence;
 }

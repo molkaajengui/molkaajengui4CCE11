@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +25,6 @@ public class Equipement {
     @ManyToMany(mappedBy = "equipements")
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("equipements")
     private List<Vehicule> vehicules = new ArrayList<>();
 }

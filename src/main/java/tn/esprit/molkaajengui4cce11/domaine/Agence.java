@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,14 +28,15 @@ public class Agence {
     @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("agence")
     private List<Employe> employes = new ArrayList<>();
 
     @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("agence")
     private List<Vehicule> vehicules = new ArrayList<>();
 
-    // Méthodes d'aide (Helper methods) pour la relation Parent-Enfant
     public void addEmploye(Employe employe) {
         if (employes == null) {
             employes = new ArrayList<>();

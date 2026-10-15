@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,9 +31,9 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("client")
     private List<Reservation> reservations = new ArrayList<>();
 
-    // Méthodes d'aide (Helper methods) pour la relation Parent-Enfant
     public void addReservation(Reservation reservation) {
         if (reservations == null) {
             reservations = new ArrayList<>();

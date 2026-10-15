@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,14 +28,15 @@ public class Contrat {
 
     @OneToOne
     @ToString.Exclude
+    @JsonIgnoreProperties("contrat")
     private Reservation reservation;
 
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("contrat")
     private List<Paiement> paiements = new ArrayList<>();
 
-    // Méthodes d'aide (Helper methods) pour la relation Parent-Enfant
     public void addPaiement(Paiement paiement) {
         if (paiements == null) {
             paiements = new ArrayList<>();
