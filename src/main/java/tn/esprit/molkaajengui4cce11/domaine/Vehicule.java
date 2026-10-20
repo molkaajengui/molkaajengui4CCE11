@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,25 +36,25 @@ public class Vehicule {
 
     @ManyToOne
     @ToString.Exclude
-    @JsonIgnoreProperties("vehicules")
+    @JsonIgnoreProperties({"employes", "vehicules", "hibernateLazyInitializer", "handler"})
     private Agence agence;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
-    @JsonIgnoreProperties("vehicule")
+    @JsonIgnore
     private List<Maintenance> maintenances = new ArrayList<>();
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
-    @JsonIgnoreProperties("vehicule")
+    @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
 
     @ManyToMany
     @ToString.Exclude
     @Builder.Default
-    @JsonIgnoreProperties("vehicules")
+    @JsonIgnoreProperties({"vehicules", "hibernateLazyInitializer", "handler"})
     private List<Equipement> equipements = new ArrayList<>();
 
     public void addMaintenance(Maintenance maintenance) {

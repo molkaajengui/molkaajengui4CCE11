@@ -1,6 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,8 +26,8 @@ public class Paiement {
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JsonIgnoreProperties({"paiements", "reservation"})
+    @JsonBackReference("contrat-paiements")
     private Contrat contrat;
 }

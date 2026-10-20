@@ -1,6 +1,7 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,10 +32,10 @@ public class Contrat {
     @JsonIgnoreProperties("contrat")
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     @Builder.Default
-    @JsonIgnoreProperties("contrat")
+    @JsonManagedReference("contrat-paiements")
     private List<Paiement> paiements = new ArrayList<>();
 
     public void addPaiement(Paiement paiement) {

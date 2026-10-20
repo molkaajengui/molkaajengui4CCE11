@@ -25,6 +25,6 @@ public class Employe {
 
     @ManyToOne
     @ToString.Exclude
-    @JsonIgnoreProperties({"employes", "vehicules"})
+    @JsonIgnoreProperties({"employes", "vehicules", "hibernateLazyInitializer", "handler"})
     private Agence agence;
 }

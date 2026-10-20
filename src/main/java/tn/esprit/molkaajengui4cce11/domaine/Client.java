@@ -1,5 +1,6 @@
 package tn.esprit.molkaajengui4cce11.domaine;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,7 +32,7 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
-    @JsonIgnoreProperties("client")
+    @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
 
     public void addReservation(Reservation reservation) {

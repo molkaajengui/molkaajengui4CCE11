@@ -1,9 +1,11 @@
 server:
   port: 8080
+  servlet:
+    context-path: /api
 
 spring:
   application:
-    name: molkaajengui4CCE11
+    name: autoloc-api
 
   # Configuration MySQL pour XAMPP (phpMyAdmin)
   datasource:
@@ -19,3 +21,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
